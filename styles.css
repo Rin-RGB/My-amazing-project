@@ -34,6 +34,7 @@ html{ scroll-behavior:smooth; } /* Плавная прокрутка к #яко�
 :target{ outline:2px dashed var(--color-primary); outline-offset:4px; } /*
 Подсветка цели */
 
+img,video{ max-width:100%; height:auto; display:block; }
 .media {
     position: relative;
     width: 100%;
