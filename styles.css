@@ -34,7 +34,19 @@ html{ scroll-behavior:smooth; } /* Плавная прокрутка к #яко�
 :target{ outline:2px dashed var(--color-primary); outline-offset:4px; } /*
 Подсветка цели */
 
-img,video{ max-width:100%; height:auto; display:block; }
+.media {
+    position: relative;
+    width: 100%;
+    max-width: 720px; /* Максимальный размер как на компьютере */
+    margin: 0 auto; /* Центрирование */
+}
+
+.media iframe {
+    width: 100%; /* Занимает всю ширину контейнера */
+    height: auto; /* Автоматическая высота */
+    aspect-ratio: 16 / 9; /* Соотношение сторон 16:9 */
+    border-radius: var(--radius); /* Скругления если нужно */
+}
 
 dialog{
     color: var(--color-fg);
