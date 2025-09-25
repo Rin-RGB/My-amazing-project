@@ -101,6 +101,7 @@ button:hover { filter: brightness(0.95); }
 .theme-toggle{
     width: min(60px, 7vw);
     height: min(60px, 7vw);
+    font-size: 0.9em;
 }
 .small-text{
     color:var(--color-muted);
