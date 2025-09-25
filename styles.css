@@ -2,7 +2,7 @@
     /* Палитра */
     --color-bg:#fff; --color-fg:#0b0b0b; --color-muted:#666;
     --color-primary:#9943eb; --color-danger:#bb003b; --color-border:#5d2a83;
-    --color-link: #5b228f;
+    --color-link: #5b228f; --color-item: #fff;
     /* Типографика и размеры */
     --font-body:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
     --space-1:4px; --space-2:8px; --space-3:16px; --space-4:24px; --space5:40px;
@@ -14,19 +14,12 @@
 /* Тёмная тема: переопределяем только значения токенов */
 body.theme-dark{
     --color-bg:#2c2c2c; --color-fg:#f5f5f5; --color-muted:#aaa;
-    --color-primary:#8c41c5; --color-link: #8c41c5;
+    --color-primary:#8c41c5; --color-link: #8c41c5; --color-item: #3c3c3c;
+    --color-border: #ac61e5;
 }
 
-.hero{
-    background:
-    linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,.15)), 
-    url("img/hero-1920.jpg") center/cover no-repeat; 
-    padding: clamp(2rem, 6vw, 6rem) 1rem;
-    border-radius:var(--radius);
-}
-.media{
-    width: 1200px;
-}
+
+
 
 * { box-sizing: border-box; }
 html, body {margin: 0; padding: 0; }
@@ -34,7 +27,7 @@ body { font-family: var(--font-body);
     background: var(--color-bg);
     color:var(--color-fg);
     line-height: 1.5; 
-    padding-inline: var(--space-3);
+    padding-inline: var(--space-4);
 }
 
 html{ scroll-behavior:smooth; } /* Плавная прокрутка к #якорю */
@@ -85,15 +78,75 @@ button:hover { filter: brightness(0.95); }
 }
 [aria-invalid="true"] { border-color: var(--color-danger); }
 
+.hero{
+    background:
+    linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,.15)), 
+    url("img/hero-1920.jpg") center/cover no-repeat; 
+    padding: clamp(2rem, 6vw, 6rem) 1rem;
+    border-radius:var(--radius);
+}
 .top-bar{
     display: flex;
+    align-items: center;
     gap: 3rem;              
     padding: 0;
     margin: 0;
 }
-.theme-toggle{
-    width: 5rem;
+.site-header_logo img{
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    width: min(60px, 7vw);
+    height: min(60px, 7vw);
+    object-fit: contain;
 }
+.theme-toggle{
+    width: min(60px, 7vw);
+    height: min(60px, 7vw);
+}
+.small-text{
+    color:var(--color-muted);
+    font-weight: bold;
+}
+.our-master_portrait img{
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--color-primary); 
+    box-shadow: var(--shadow);
+    width: min(200px, 30vw);
+    height: min(200px, 30vw);
+}
+.funfact-card {
+    flex: 1;
+    background: var(--color-item); /* Белый фон карточки */
+    padding: 25px; /* Внутренние отступы */
+    margin: 20px 0; /* Вертикальные отступы */
+    border-radius: var(--radius); /* Скругленные углы */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* Легкая тень */
+    border-left: 4px solid var(--color-primary); /* Синяя полоса слева */
+    transition: transform 0.3s ease; /* Плавная анимация трансформации */
+}
+.funfact-card:hover {
+    transform: translateY(-5px); /* Сдвиг вправо при наведении */
+}
+.funfact-title {
+    font-size: 20px; /* Размер шрифта заголовка опыта */
+    color: var(--color-border);
+    margin: 0 0 10px 0; /* Отступ снизу */
+    font-weight: 600; /* Жирный шрифт */
+}
+.experience-desc {
+    color: var(--color-muted); /* Серый цвет текста */
+    line-height: 1.6; /* Межстрочный интервал */
+    margin: 0; /* Убираем отступы */
+}
+.funfacts_list{
+    display: flex;
+    gap: 2rem;            
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
 nav ul {
     display: flex;
     gap: 2rem;            

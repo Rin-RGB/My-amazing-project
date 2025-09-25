@@ -12,7 +12,9 @@
 <body>
     <header class="site-header">
         <div class="top-bar">
-            <h2><a class="site-header_logo" href="index.html">Логотип</a></h2>
+            <h2><a class="site-header_logo" href="index.html">
+                <img src="assets/logo.png" alt="Логотип">
+            </a></h2>
             <button class="theme-toggle" type="button" aria-pressed="false">Тема</button>
             <script defer>
                 const KEY='theme', btn=document.querySelector('.theme-toggle');
@@ -61,7 +63,7 @@
                     <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"
                             aria-describedby="phoneHelp" placeholder="+7 (___) ___-__-__"
                             required pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$">
-                    <small id="phoneHelp">Формат: +7 (900) 000-00-00</small>
+                    <small id="phoneHelp" class="small-text">Формат: +7 (900) 000-00-00</small>
 
                     <label for="date">Дата</label>
                     <input id="date" name="date" type="date">
