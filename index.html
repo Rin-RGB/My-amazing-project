@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная - Мой любимый сайт</title>
+    <title>Главная - Гадания с призраками</title>
     <meta name="description" content="Краткое о моём сайте">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="site-header">
-        <div class="top-bar">
+        <div class="top-bar"> 
             <h2><a class="site-header_logo" href="index.html">
                 <img src="assets/logo.png" alt="Логотип">
             </a></h2>
@@ -28,6 +28,7 @@
                 if(localStorage.getItem(KEY)==='dark' || (!localStorage.getItem(KEY) && prefersDark)){
                     document.body.classList.add('theme-dark');
                     btn?.setAttribute('aria-pressed','true');
+                    icon.textContent = '☀️';
                 }
                 
                 btn?.addEventListener('click', ()=>{
@@ -48,6 +49,7 @@
     </header>
 
     <main>
+        <h1>Добро пожаловать на лучший сайт!</h1>
         <section class="hero">
             <picture>
                 <source type="image/avif" srcset="img/card.avif">
@@ -58,10 +60,7 @@
                 <h1>Карты Таро</h1>
                 <p>Карты, в которых Башню надо крыть Мышами</p>
             </div>
-        </section>
-
-        <h1>Добро пожаловать на лучший сайт!</h1>
-        
+        </section>        
         <section id="services">
             <h2>Наши услуги</h2>
             <ul>
