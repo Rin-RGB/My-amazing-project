@@ -121,8 +121,8 @@ button:hover { filter: brightness(0.95); }
 }
 .site-header_logo img{
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-    width: max(60px, 4vw);
-    height: max(60px, 4vw);
+    width: max(45px, 4vw);
+    height: max(45px, 4vw);
     object-fit: contain;
 }
 .theme-toggle{
