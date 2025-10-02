@@ -5,7 +5,7 @@
     --color-link: #5b228f; --color-item: #fff;
     /* Типографика и размеры */
     --font-body:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-    --space-1:4px; --space-2:8px; --space-3:16px; --space-4:24px; --space5:40px;
+    --space-1:4px; --space-2:8px; --space-3:16px; --space-4:24px; --space-5:40px;
     /* Скругления и тени */
     --radius:12px;
     --shadow:0 1px 2px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.08);
@@ -19,49 +19,58 @@ body.theme-dark{
 }
 
 
-
-
 * { box-sizing: border-box; }
-html, body {margin: 0; padding: 0; }
+html, body {min-height: 100vh; margin: 0; padding: 0; }
 body { font-family: var(--font-body);
     background: var(--color-bg);
     color:var(--color-fg);
     line-height: 1.5; 
+    display: flex;
+    flex-direction: column;
     padding-inline: var(--space-4);
 }
+main{
+    flex: 1;
+}
 
-html{ scroll-behavior:smooth; } /* Плавная прокрутка к #якорю */
-:target{ outline:2px dashed var(--color-primary); outline-offset:4px; } /*
-Подсветка цели */
+/* html{ scroll-behavior:smooth; }  
+:target{ outline:2px dashed var(--color-primary); outline-offset:4px; } */
+/* Подсветка цели */
 
-img,video{ max-width:100%; height:auto; display:block; }
-.media {
-    position: relative;
-    width: 100%;
-    max-width: 720px; /* Максимальный размер как на компьютере */
-    margin: 0 auto; /* Центрирование */
+img, video {
+    height: auto;
+    display: block;
+    max-width: 100%; 
+    margin: 0 auto;
+    border-radius: var(--radius); 
 }
 
 .media iframe {
-    width: 100%; /* Занимает всю ширину контейнера */
-    height: auto; /* Автоматическая высота */
-    aspect-ratio: 16 / 9; /* Соотношение сторон 16:9 */
-    border-radius: var(--radius); /* Скругления если нужно */
+    width: min(720px, 100%); 
+    height: auto; 
+    aspect-ratio: 16 / 9; 
+    border-radius: var(--radius); 
+    margin: 0 auto; 
+    display: block;
 }
 
 dialog{
+    line-height: 1;
     color: var(--color-fg);
     background-color: var(--color-bg);
     border-radius: var(--space-3);
     border: 0.2rem solid var(--color-border);
 }
-
+.dialog-title{
+    margin: 0;
+}
 
 label { 
     display: block;
     margin: 0.5rem 0 0.25rem;
     color: var(--color-fg);
 }
+
 input, select, textarea, button{
     color: var(--color-fg);
     width: 100%;
@@ -69,11 +78,12 @@ input, select, textarea, button{
     padding: .5rem .75rem;
     border: 1px solid var(--color-muted);
     border-radius: var(--space-2);
-    background: var(--color-bg)
+    background: var(--color-bg);
+    margin: .2rem;
 }
 
 button, [type="submit"] {
-    margin: .2rem;
+    
     background: var(--color-primary);
     color: #fff;
     border: 0.02rem solid var(--color-border);
@@ -95,8 +105,12 @@ button:hover { filter: brightness(0.95); }
     background:
     linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,.15)), 
     url("img/hero-1920.jpg") center/cover no-repeat; 
-    padding: clamp(2rem, 6vw, 6rem) 1rem;
+    padding: clamp(1rem, 3vh, 4rem) 1rem;
     border-radius:var(--radius);
+    gap: var(--space-3);
+}
+.hero p, h1, h2{
+    margin: 0;
 }
 .top-bar{
     display: flex;
@@ -107,18 +121,24 @@ button:hover { filter: brightness(0.95); }
 }
 .site-header_logo img{
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-    width: min(60px, 7vw);
-    height: min(60px, 7vw);
+    width: max(60px, 7vw);
+    height: max(60px, 7vw);
     object-fit: contain;
 }
 .theme-toggle{
-    width: min(60px, 7vw);
-    height: min(60px, 7vw);
+    width: max(45px, 7vw);
+    height: max(45px, 7vw);
     font-size: 0.9em;
 }
 .small-text{
     color:var(--color-muted);
     font-weight: bold;
+}
+.our-master{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
 }
 .our-master_portrait img{
     border-radius: 50%;
@@ -130,27 +150,27 @@ button:hover { filter: brightness(0.95); }
 }
 .funfact-card {
     flex: 1;
-    background: var(--color-item); /* Белый фон карточки */
-    padding: 25px; /* Внутренние отступы */
-    margin: 20px 0; /* Вертикальные отступы */
-    border-radius: var(--radius); /* Скругленные углы */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* Легкая тень */
-    border-left: 4px solid var(--color-primary); /* Синяя полоса слева */
-    transition: transform 0.3s ease; /* Плавная анимация трансформации */
+    background: var(--color-item); 
+    padding: 25px; 
+    margin: 20px 0; 
+    border-radius: var(--radius); 
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08); 
+    border-left: 4px solid var(--color-primary); 
+    transition: transform 0.3s ease; 
 }
 .funfact-card:hover {
-    transform: translateY(-5px); /* Сдвиг вправо при наведении */
+    transform: translateY(-5px); 
 }
 .funfact-title {
-    font-size: 20px; /* Размер шрифта заголовка опыта */
+    font-size: 20px; 
     color: var(--color-border);
-    margin: 0 0 10px 0; /* Отступ снизу */
-    font-weight: 600; /* Жирный шрифт */
+    margin: 0 0 10px 0; 
+    font-weight: 600;
 }
 .experience-desc {
-    color: var(--color-muted); /* Серый цвет текста */
-    line-height: 1.6; /* Межстрочный интервал */
-    margin: 0; /* Убираем отступы */
+    color: var(--color-muted); 
+    line-height: 1.6; 
+    margin: 0; 
 }
 .funfacts_list{
     display: flex;

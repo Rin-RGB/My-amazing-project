@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>>О нас - Мой любимый сайт</title>
+        <title>О нас - Гадания с призраками</title>
         <meta name="description" content="Узнайте больше о нашей компании и истории">
         <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="styles.css">
@@ -14,20 +14,28 @@
             <h2><a class="site-header_logo" href="index.html">
                 <img src="assets/logo.png" alt="Логотип">
             </a></h2>
-            <button class="theme-toggle" type="button" aria-pressed="false">Тема</button>
+             <button class="theme-toggle" type="button" aria-pressed="false">
+                <span class="theme-icon">🌙</span>
+            </button>
             <script defer>
                 const KEY='theme', btn=document.querySelector('.theme-toggle');
+                const icon = btn.querySelector('.theme-icon');
                 const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
                 
+                function updateIcon(isDark) {
+                    icon.textContent = isDark ? '☀️' : '🌙';
+                }
                 if(localStorage.getItem(KEY)==='dark' || (!localStorage.getItem(KEY) && prefersDark)){
                     document.body.classList.add('theme-dark');
                     btn?.setAttribute('aria-pressed','true');
+                    icon.textContent = '☀️';
                 }
                 
                 btn?.addEventListener('click', ()=>{
                     const isDark=document.body.classList.toggle('theme-dark');
                     btn.setAttribute('aria-pressed', String(isDark));
                     localStorage.setItem(KEY, isDark ? 'dark' : 'light');
+                    updateIcon(isDark);
                 });
             </script>
         </div>

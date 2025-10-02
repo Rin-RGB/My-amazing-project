@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>>Контакты - Мой любимый сайт</title>
+        <title>Контакты - Гадания с призраками</title>
         <meta name="description" content="Свяжитесь с нами!">
         <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="styles.css">
@@ -15,20 +15,28 @@
             <h2><a class="site-header_logo" href="index.html">
                 <img src="assets/logo.png" alt="Логотип">
             </a></h2>
-            <button class="theme-toggle" type="button" aria-pressed="false">Тема</button>
+             <button class="theme-toggle" type="button" aria-pressed="false">
+                <span class="theme-icon">🌙</span>
+            </button>
             <script defer>
                 const KEY='theme', btn=document.querySelector('.theme-toggle');
+                const icon = btn.querySelector('.theme-icon');
                 const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
                 
+                function updateIcon(isDark) {
+                    icon.textContent = isDark ? '☀️' : '🌙';
+                }
                 if(localStorage.getItem(KEY)==='dark' || (!localStorage.getItem(KEY) && prefersDark)){
                     document.body.classList.add('theme-dark');
                     btn?.setAttribute('aria-pressed','true');
+                    icon.textContent = '☀️';
                 }
                 
                 btn?.addEventListener('click', ()=>{
                     const isDark=document.body.classList.toggle('theme-dark');
                     btn.setAttribute('aria-pressed', String(isDark));
                     localStorage.setItem(KEY, isDark ? 'dark' : 'light');
+                    updateIcon(isDark);
                 });
             </script>
         </div>
@@ -51,7 +59,7 @@
             <p> +7 (123) 456-78-90</p>
             <button id="openDialog" type="button">Написать нам</button>
             <dialog id="contactDialog" aria-labelledby="dialogTitle">
-                <h2 id="dialogTitle">Задать вопрос или сделать заказ</h2>
+                <h2 id="dialogTitle" class="dialog-title">Задать вопрос или сделать заказ</h2>
                 <form id="contactForm" method="dialog" novalidate>
                     <label for="name">Имя</label>
                     <input id="name" name="name" type="text" required minlength="2"autocomplete="given-name">
@@ -77,7 +85,7 @@
                         <option>Индивидуальный заказ</option>
                     </select>
                     <label for="message">Уточните запрос</label>
-                    <textarea iid="message" name="message" row="4" required></textarea>
+                    <textarea id="message" name="message" rows="4" required></textarea>
                     <div class="form-actions">
                         <button type="button" id="closeDialog">Закрыть</button>
                         <button type="submit">Отправить</button>
